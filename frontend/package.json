@@ -1,0 +1,17 @@
+{
+  "name": "tibia-inventory-tracker-frontend",
+  "version": "1.0.0",
+  "description": "Frontend para o sistema de gerenciamento de inventário do Tibia",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "js-cookie": "^3.0.5",
+    "next": "^13.4.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,0 +1,209 @@
+/* Estilos globais para o Tibia Inventory Tracker */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --background-color: #1a1a1a;
+  --panel-background: #2a2a2a;
+  --text-color: #e0e0e0;
+  --accent-color: #cd9b1d;
+  --border-color: #8b4513;
+  --error-color: #8b0000;
+  --success-color: #006400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  background-image: url('/images/tibia-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ffd700;
+}
+
+/* Componentes Tibia */
+.tibia-panel {
+  background-color: var(--panel-background);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.tibia-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.7;
+}
+
+.tibia-button {
+  background: linear-gradient(to bottom, #8b4513, #5e2c0b);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: inline-block;
+}
+
+.tibia-button:hover {
+  background: linear-gradient(to bottom, #a25616, #8b4513);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+.tibia-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tibia-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.tibia-button.secondary {
+  background: linear-gradient(to bottom, #444, #333);
+  border-color: #555;
+}
+
+.tibia-button.secondary:hover {
+  background: linear-gradient(to bottom, #555, #444);
+}
+
+.tibia-button.danger {
+  background: linear-gradient(to bottom, #8b0000, #5e0000);
+  border-color: #8b0000;
+}
+
+.tibia-button.danger:hover {
+  background: linear-gradient(to bottom, #a00000, #8b0000);
+}
+
+.tibia-input, .tibia-select, .tibia-textarea {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.tibia-input:focus, .tibia-select:focus, .tibia-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(205, 155, 29, 0.3);
+}
+
+.tibia-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.tibia-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23cd9b1d' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Loader */
+.loader {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(205, 155, 29, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .tibia-button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .tibia-input, .tibia-select, .tibia-textarea {
+    padding: 12px;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
